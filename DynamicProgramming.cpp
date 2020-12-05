@@ -15,7 +15,7 @@ using namespace std;
 //通过递归计算，得到左右两部分的最大子序列和是 lsum，rsum
 //从数组中间开始向两边计算最大子序列和 cross
 //返回 max(lsum, cross, rsum)
-int CrossSum(vector<int>& nums,int left,int right,int mid) {
+int CrossSum(vector<int>& nums, int left, int right, int mid) {
 	if (left == right) {
 		return nums[left];
 	}
@@ -47,7 +47,7 @@ int Max(int a, int b, int c) {
 	return c;
 }
 
-int MaxSubArray(vector<int>& nums,int left,int right) {
+int MaxSubArray(vector<int>& nums, int left, int right) {
 	if (left == right) {
 		return nums[left];
 	}
@@ -59,7 +59,7 @@ int MaxSubArray(vector<int>& nums,int left,int right) {
 
 	return Max(lsum, rsum, cross);
 }
-	
+
 
 
 //动态规划
@@ -88,7 +88,7 @@ int main() {
 	for (int i : nums) {
 		cout << i << " ";
 	}
-	cout << "最大子序和："<< endl;
+	cout << "最大子序和：" << endl;
 	cout << "分治法：" << MaxSubArray(nums, 0, nums.size() - 1) << endl;
 	cout << "动态规划：" << FindMaxSubSum(nums) << endl;
 

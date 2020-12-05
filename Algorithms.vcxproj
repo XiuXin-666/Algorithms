@@ -142,13 +142,13 @@
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="AstarFindPath.cpp" />
     <ClCompile Include="BubbleSort.cpp" />
-    <ClCompile Include="Dynamic.cpp" />
+    <ClCompile Include="DynamicProgramming.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
-    <ClCompile Include="ShellSortcpp.cpp" />
+    <ClCompile Include="ShellSort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

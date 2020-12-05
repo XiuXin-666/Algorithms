@@ -24,9 +24,6 @@
     <ClCompile Include="BubbleSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Dynamic.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="HeapSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -42,7 +39,10 @@
     <ClCompile Include="SelectionSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ShellSortcpp.cpp">
+    <ClCompile Include="DynamicProgramming.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
