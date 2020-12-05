@@ -18,31 +18,31 @@
     <ClCompile Include="Algorithms.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\AStarFindPath.cpp">
+    <ClCompile Include="AstarFindPath.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\BubbleSort.cpp">
+    <ClCompile Include="BubbleSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\DynamicProgramming.cpp">
+    <ClCompile Include="Dynamic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\HeapSort.cpp">
+    <ClCompile Include="HeapSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\InsertionSort.cpp">
+    <ClCompile Include="InsertionSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\MergeSort.cpp">
+    <ClCompile Include="MergeSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\QuickSort.cpp">
+    <ClCompile Include="QuickSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\SelectionSort.cpp">
+    <ClCompile Include="SelectionSort.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Clone Codes\ShellSortcpp.cpp">
+    <ClCompile Include="ShellSortcpp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
