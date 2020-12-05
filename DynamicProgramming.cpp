@@ -7,10 +7,23 @@
 using namespace std;
 
 //穷举法
-//分治法的做题思路是：先将问题分解为子问题；解决子问题后，再将子问题合并，解决主问题。
-//
+int E_FindMaxSubSum(vector<int>& nums) {
+	int maxSum = 0, curSum;
+	for (int i = 0; i <	nums.size(); i++) {
+		for (int j = i; j < nums.size(); j++) {
+			curSum = 0;
+			for (int k = i; k <= j; k++)
+				curSum += nums[k];
+			if (curSum > maxSum)
+				maxSum = curSum;
+		}
+	}
+	return maxSum;
+}
+
+//分治法
+//做题思路是：先将问题分解为子问题；解决子问题后，再将子问题合并，解决主问题。
 //使用分治法解本题的思路是：
-//
 //将数组分为 2 部分。例如[1, 2, 3, 4] 被分为[1, 2] 和[3, 4]
 //通过递归计算，得到左右两部分的最大子序列和是 lsum，rsum
 //从数组中间开始向两边计算最大子序列和 cross
@@ -37,27 +50,17 @@ int CrossSum(vector<int>& nums, int left, int right, int mid) {
 	return leftMaxSum + rightMaxSum;
 }
 
-int Max(int a, int b, int c) {
-	if (a > b) {
-		b = a;
-	}
-	if (b > c) {
-		c = b;
-	}
-	return c;
-}
-
 int MaxSubArray(vector<int>& nums, int left, int right) {
 	if (left == right) {
 		return nums[left];
 	}
 
-	int mid = (left + right) >> 2;
+	int mid = left + (right - left) / 2;
 	int lsum = MaxSubArray(nums, left, mid);
 	int rsum = MaxSubArray(nums, mid + 1, right);
 	int cross = CrossSum(nums, left, right, mid);
 
-	return Max(lsum, rsum, cross);
+	return max(max(lsum, rsum), cross);
 }
 
 
@@ -75,24 +78,35 @@ int FindMaxSubSum(vector<int>& nums) {
 		dp[i] = max(nums[i], dp[i - 1] + nums[i]);
 		res = max(res, dp[i]);
 	}
-	return res;
+	return dp[sz-1];
 }
 
 
 int main() {
 	vector<int> nums;
 	srand((unsigned)time(NULL));
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < 2000; i++) {
 		nums.push_back(rand() % (41) - 10); //生成 -10 到 30 的随机数
 	}
 	for (int i : nums) {
 		cout << i << " ";
 	}
+	cout << endl << endl;
 	cout << "最大子序和：" << endl;
-	cout << "分治法：" << MaxSubArray(nums, 0, nums.size() - 1) << endl;
-	cout << "动态规划：" << FindMaxSubSum(nums) << endl;
-
-
-
+	clock_t Start, End;
+	Start = clock();
+	cout << "枚举法：" << E_FindMaxSubSum(nums) << "		";
+	End = clock();
+	cout << "Run Time is:" << ((double)End - (double)Start)/ CLOCKS_PER_SEC << " s" << endl;
+	clock_t Start1, End1;
+	Start1 = clock();
+	cout << "分治法：" << MaxSubArray(nums, 0, nums.size() - 1) << "		";
+	End1 = clock();
+	cout << "Run Time is:" << ((double)End1 - (double)Start1) / CLOCKS_PER_SEC << " s" << endl;
+	clock_t Start2, End2;
+	Start2 = clock();
+	cout << "动态规划：" << FindMaxSubSum(nums) << "		";
+	End2 = clock();
+	cout << "Run Time is:" << ((double)End2 - (double)Start2) / CLOCKS_PER_SEC << " s" << endl;
 	return 0;
 }
