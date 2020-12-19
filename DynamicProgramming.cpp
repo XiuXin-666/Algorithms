@@ -81,32 +81,32 @@ int FindMaxSubSum(vector<int>& nums) {
 	return dp[sz-1];
 }
 
-
-int main() {
-	vector<int> nums;
-	srand((unsigned)time(NULL));
-	for (int i = 0; i < 2000; i++) {
-		nums.push_back(rand() % (41) - 10); //生成 -10 到 30 的随机数
-	}
-	for (int i : nums) {
-		cout << i << " ";
-	}
-	cout << endl << endl;
-	cout << "最大子序和：" << endl;
-	clock_t Start, End;
-	Start = clock();
-	cout << "枚举法：" << E_FindMaxSubSum(nums) << "		";
-	End = clock();
-	cout << "Run Time is:" << ((double)End - (double)Start)/ CLOCKS_PER_SEC << " s" << endl;
-	clock_t Start1, End1;
-	Start1 = clock();
-	cout << "分治法：" << MaxSubArray(nums, 0, nums.size() - 1) << "		";
-	End1 = clock();
-	cout << "Run Time is:" << ((double)End1 - (double)Start1) / CLOCKS_PER_SEC << " s" << endl;
-	clock_t Start2, End2;
-	Start2 = clock();
-	cout << "动态规划：" << FindMaxSubSum(nums) << "		";
-	End2 = clock();
-	cout << "Run Time is:" << ((double)End2 - (double)Start2) / CLOCKS_PER_SEC << " s" << endl;
-	return 0;
-}
+//
+//int main() {
+//	vector<int> nums;
+//	srand((unsigned)time(NULL));
+//	for (int i = 0; i < 2000; i++) {
+//		nums.push_back(rand() % (41) - 10); //生成 -10 到 30 的随机数
+//	}
+//	for (int i : nums) {
+//		cout << i << " ";
+//	}
+//	cout << endl << endl;
+//	cout << "最大子序和：" << endl;
+//	clock_t Start, End;
+//	Start = clock();
+//	cout << "枚举法：" << E_FindMaxSubSum(nums) << "		";
+//	End = clock();
+//	cout << "Run Time is:" << ((double)End - (double)Start)/ CLOCKS_PER_SEC << " s" << endl;
+//	clock_t Start1, End1;
+//	Start1 = clock();
+//	cout << "分治法：" << MaxSubArray(nums, 0, nums.size() - 1) << "		";
+//	End1 = clock();
+//	cout << "Run Time is:" << ((double)End1 - (double)Start1) / CLOCKS_PER_SEC << " s" << endl;
+//	clock_t Start2, End2;
+//	Start2 = clock();
+//	cout << "动态规划：" << FindMaxSubSum(nums) << "		";
+//	End2 = clock();
+//	cout << "Run Time is:" << ((double)End2 - (double)Start2) / CLOCKS_PER_SEC << " s" << endl;
+//	return 0;
+//}

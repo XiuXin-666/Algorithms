@@ -72,6 +72,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>D:\Program Files (x86)\Visual Studio 2019\My Projects\Algorithms;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -140,15 +141,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
+    <ClCompile Include="AStarImplement.cpp" />
     <ClCompile Include="AstarFindPath.cpp" />
+    <ClCompile Include="A_algorithm.cpp" />
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="DynamicProgramming.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
+    <ClCompile Include="Krusal.cpp" />
     <ClCompile Include="MergeSort.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Prim.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="ShellSort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="A_algorithm.h" />
+    <ClInclude Include="Node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

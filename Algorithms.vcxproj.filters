@@ -13,37 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\图相关算法">
+      <UniqueIdentifier>{8ab2225c-e824-40f1-83ab-925cd237be99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\排序算法">
+      <UniqueIdentifier>{d19caf0e-2df6-4fe1-bb86-6fd0ba50eaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\A%2a 算法">
+      <UniqueIdentifier>{01807485-4c2f-4fb1-b78e-79bf14d0ccfc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="AstarFindPath.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="BubbleSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="HeapSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="InsertionSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="MergeSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="QuickSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionSort.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="DynamicProgramming.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="ShellSort.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Prim.cpp">
+      <Filter>源文件\图相关算法</Filter>
     </ClCompile>
+    <ClCompile Include="Krusal.cpp">
+      <Filter>源文件\图相关算法</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="InsertionSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="MergeSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="QuickSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="HeapSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellSort.cpp">
+      <Filter>源文件\排序算法</Filter>
+    </ClCompile>
+    <ClCompile Include="A_algorithm.cpp">
+      <Filter>源文件\A%2a 算法</Filter>
+    </ClCompile>
+    <ClCompile Include="AstarFindPath.cpp">
+      <Filter>源文件\A%2a 算法</Filter>
+    </ClCompile>
+    <ClCompile Include="AStarImplement.cpp">
+      <Filter>源文件\A%2a 算法</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>源文件\A%2a 算法</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="A_algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

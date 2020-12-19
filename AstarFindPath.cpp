@@ -185,29 +185,30 @@ void autoGenerate(int a[N][N])
 		if (move(a, tmp, dir)) statecpy(a, tmp);
 	}
 }
-//
+
+
 //int main()
 //{
-//	int a[n][n][maxstate] = { 0 };
-//	int start[n][n] = { 1,2,3,4,5,6,7,8,0 };
-//	autogenerate(start);
+//	int a[N][N][maxState] = { 0 };
+//	int start[N][N] = { 1,2,3,4,5,6,7,8,0 };
+//	autoGenerate(start);
 //	cout << start[0][0] << start[1][1];
 //	//    int start[n][n] = {4,0,5,1,2,3,7,8,6};
 //
-//	int target[n][n] = { 1,2,3,4,5,6,7,8,0 };
+//	int target[N][N] = { 1,2,3,4,5,6,7,8,0 };
 //
-//	if (!(calde(start) % 2 == calde(target) % 2)) {
+//	if (!(calDe(start) % 2 == calDe(target) % 2)) {
 //		cout << "无解\n";
 //		return 0;
 //	}
 //
-//	int path[maxstate] = { 0 };
-//	int res = astar(a, start, target, path);
+//	int path[maxState] = { 0 };
+//	int res = AStar(a, start, target, path);
 //	if (res == -1) {
 //		cout << "达到最大搜索能力\n";
 //		return 0;
 //	}
-//	int shortest[maxstate] = { 0 }, j = 0;
+//	int shortest[maxState] = { 0 }, j = 0;
 //	while (res != 0) {
 //		shortest[j++] = res;
 //		res = path[res];
@@ -223,3 +224,4 @@ void autoGenerate(int a[N][N])
 //}
 
 
+ 
