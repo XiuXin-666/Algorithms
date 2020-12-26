@@ -1,62 +1,85 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-#define MAX 100
-#define MAXCOST 0x7fffffff
+//保存两个顶点 与 边的权值
+typedef struct Tree {
+	int vexa;
+	int vexb;
+	int edge;
+}temp;
+vector<Tree> tree;
 
-int graph[MAX][MAX];
+//	prim算法
+int prim(vector<vector<int> >& g) {
+	int vex = g.size() - 1;		//顶点个数
+	int cost = 0;	//最终生成树权值
+	vector<int> mst(vex + 1);	//MST[i]表示顶点i连到MST中的哪个顶点，值=0时表示在MST中
+	vector<int> MINedge(vex + 1);	//顶点i的邻接边中的最小值，值=-1时表示在MST中
 
-int Prim(int graph[][MAX], int n)//二维数组作为参数如何使用？
-{
-	int sta[MAX];//存放某一条边的起点值
-	int lowcost[MAX];//存放以i为终点的的边的最小的权值
-	int min, minid = 0, sum = 0;//min用来存放最小权值，minid用来存放权值最小的边所对应的终点
-	for (int i = 2; i <= n; i++)
-	{
-		lowcost[i] = graph[1][i];//初始化lowcost[i]，并把他们的初始值都看作是从节点1出发到i的权值
-		sta[i] = 1;//起点赋值为1
+	mst[1] = 0;	//将点1放入MST
+	for (int i = 1; i <= vex; i++) {
+		MINedge[i] = g[1][i];
+		mst[i] = 1;
 	}
-	sta[1] = 0;//节点1进入最小生成树
-	for (int h = 2; h <= n; h++)
-	{
-		min = MAXCOST;//找到最小的，先来个较大值
-		for (int j = 2; j <= n; j++)
-		{
-			if (lowcost[j] < min && lowcost[j] != 0)//如果找到权值较小的就赋值给min，并把终点j赋值给minid。
-			{
-				min = lowcost[j]; minid = j;
+
+	for (int i = 2; i <= vex; i++) {
+		int MINvex = 0;		//最小边顶点
+		int MINcost = INT_MAX;	//最小权值
+
+		for (int j = 2; j <= vex; j++) {
+			if (MINedge[j] < MINcost && MINedge[j] != -1) {	//最小边顶点不在MST中（两个顶点不能都在MST中）
+				MINvex = j;
+				MINcost = MINedge[j];
 			}
 		}
-		lowcost[minid] = 0;//这条边已经进入最小生成树，所以把值置为0
-		sum += min;
-		for (int s = 2; s <= n; s++)
-		{
-			if (lowcost[s] < graph[minid][s])//如果原先的lowcost[j]的值大于以minid为起点到终点j的权值，则更新它，并把起点更新为minid
-			{
-				lowcost[s] = graph[minid][s];
-				sta[s] = minid;
+		Tree t;	//将点放入MST中
+		t.vexa = mst[MINvex];
+		t.vexb = MINvex;
+		t.edge = MINcost;
+		tree.push_back(t);
+		cost += MINcost;
+		MINedge[MINvex] = -1;
+
+		//更新MINedge
+		for (int i = 2; i <= vex; i++) {
+			if (g[MINvex][i] < MINedge[i]) {
+				MINedge[i] = g[MINvex][i];
+				mst[i] = MINvex;
 			}
 		}
 	}
-	return sum;
 
+	return cost;
 }
 
-//int main()
-//{
-//	int m, n, x, y, cost;
-//	cout << "请输入节点数目和边的数目：" << endl;
-//	cin >> m >> n;
-//	for (int i = 1; i <= m; i++)
-//		for (int j = 1; j <= m; j++)
-//			graph[i][j] = MAXCOST;
-//
-//	for (int k = 1; k <= n; k++)
-//	{
-//		cin >> x >> y >> cost;
-//		graph[x][y] = graph[y][x] = cost;
-//	}
-//	cost = Prim(graph, n);
-//	cout << cost << endl;
-//	return 0;
-//}
+int main() {
+	//初始化图
+	int vexNum, edgeNum;
+	cout << "输入顶点个数、边数：";
+	cin >> vexNum >> edgeNum;
+	vector<vector<int> > graph(vexNum + 1, vector<int>(vexNum + 1, INT_MAX));
+	cout << "输入邻接边及权值a b w:" << endl;
+	char A, B;
+	int w;
+	for (int i = 0; i < edgeNum; i++) {
+		cin >> A >> B >> w;
+		int a = A - 64;
+		int b = B - 64;
+		graph[a][b] = w;
+		graph[b][a] = w;
+	}
+	for (int i = 1; i <= vexNum; i++)
+		graph[i][i] = 0;
+
+	int cost = prim(graph);	//prim算法
+
+	cout << endl << "最小生成树组成：" << endl;
+	for (int i = 0; i < tree.size(); i++) {
+		cout << char(tree[i].vexa + 64) << " -> " << char(tree[i].vexb + 64) << " = " << tree[i].edge << endl;
+	}
+	cout << "总权值为：" << cost << endl;
+
+	system("pause");
+	return 0;
+}

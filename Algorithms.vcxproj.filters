@@ -22,18 +22,18 @@
     <Filter Include="源文件\A%2a 算法">
       <UniqueIdentifier>{01807485-4c2f-4fb1-b78e-79bf14d0ccfc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\传智杯">
+      <UniqueIdentifier>{00ee5ce0-0f4f-443d-84ad-57775f7d23f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\算法实验">
+      <UniqueIdentifier>{1485a347-e607-4c7d-8c24-7c27318c95b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicProgramming.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Prim.cpp">
-      <Filter>源文件\图相关算法</Filter>
-    </ClCompile>
-    <ClCompile Include="Krusal.cpp">
       <Filter>源文件\图相关算法</Filter>
     </ClCompile>
     <ClCompile Include="BubbleSort.cpp">
@@ -69,12 +69,30 @@
     <ClCompile Include="Node.cpp">
       <Filter>源文件\A%2a 算法</Filter>
     </ClCompile>
+    <ClCompile Include="Sort.cpp">
+      <Filter>源文件\传智杯</Filter>
+    </ClCompile>
+    <ClCompile Include="files.cpp">
+      <Filter>源文件\传智杯</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicProgramming.cpp">
+      <Filter>源文件\算法实验</Filter>
+    </ClCompile>
+    <ClCompile Include="最大邮资问题.cpp">
+      <Filter>源文件\算法实验</Filter>
+    </ClCompile>
+    <ClCompile Include="Kruskal.cpp">
+      <Filter>源文件\图相关算法</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="A_algorithm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

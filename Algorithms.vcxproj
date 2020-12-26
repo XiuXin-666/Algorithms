@@ -146,19 +146,23 @@
     <ClCompile Include="A_algorithm.cpp" />
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="DynamicProgramming.cpp" />
+    <ClCompile Include="files.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="InsertionSort.cpp" />
-    <ClCompile Include="Krusal.cpp" />
+    <ClCompile Include="Kruskal.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Prim.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="ShellSort.cpp" />
+    <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="最大邮资问题.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A_algorithm.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
