@@ -144,6 +144,7 @@
     <ClCompile Include="AStarImplement.cpp" />
     <ClCompile Include="AstarFindPath.cpp" />
     <ClCompile Include="A_algorithm.cpp" />
+    <ClCompile Include="BackTracking.cpp" />
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="DynamicProgramming.cpp" />
     <ClCompile Include="files.cpp" />
@@ -157,12 +158,14 @@
     <ClCompile Include="SelectionSort.cpp" />
     <ClCompile Include="ShellSort.cpp" />
     <ClCompile Include="Sort.cpp" />
+    <ClCompile Include="最大邮资.cpp" />
+    <ClCompile Include="分支限界法.cpp" />
     <ClCompile Include="最大邮资问题.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="A_algorithm.h" />
+    <ClInclude Include="MaxHeap.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

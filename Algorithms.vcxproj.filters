@@ -28,6 +28,9 @@
     <Filter Include="源文件\算法实验">
       <UniqueIdentifier>{1485a347-e607-4c7d-8c24-7c27318c95b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\装载问题">
+      <UniqueIdentifier>{ce87d724-d3d1-40cf-a487-72cadec03b4e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp">
@@ -84,6 +87,15 @@
     <ClCompile Include="Kruskal.cpp">
       <Filter>源文件\图相关算法</Filter>
     </ClCompile>
+    <ClCompile Include="BackTracking.cpp">
+      <Filter>源文件\装载问题</Filter>
+    </ClCompile>
+    <ClCompile Include="分支限界法.cpp">
+      <Filter>源文件\装载问题</Filter>
+    </ClCompile>
+    <ClCompile Include="最大邮资.cpp">
+      <Filter>源文件\算法实验</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Node.h">
@@ -92,8 +104,8 @@
     <ClInclude Include="A_algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>头文件</Filter>
+    <ClInclude Include="MaxHeap.h">
+      <Filter>源文件\装载问题</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

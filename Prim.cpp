@@ -53,33 +53,33 @@ int prim(vector<vector<int> >& g) {
 	return cost;
 }
 
-int main() {
-	//初始化图
-	int vexNum, edgeNum;
-	cout << "输入顶点个数、边数：";
-	cin >> vexNum >> edgeNum;
-	vector<vector<int> > graph(vexNum + 1, vector<int>(vexNum + 1, INT_MAX));
-	cout << "输入邻接边及权值a b w:" << endl;
-	char A, B;
-	int w;
-	for (int i = 0; i < edgeNum; i++) {
-		cin >> A >> B >> w;
-		int a = A - 64;
-		int b = B - 64;
-		graph[a][b] = w;
-		graph[b][a] = w;
-	}
-	for (int i = 1; i <= vexNum; i++)
-		graph[i][i] = 0;
-
-	int cost = prim(graph);	//prim算法
-
-	cout << endl << "最小生成树组成：" << endl;
-	for (int i = 0; i < tree.size(); i++) {
-		cout << char(tree[i].vexa + 64) << " -> " << char(tree[i].vexb + 64) << " = " << tree[i].edge << endl;
-	}
-	cout << "总权值为：" << cost << endl;
-
-	system("pause");
-	return 0;
-}
+//int main() {
+//	//初始化图
+//	int vexNum, edgeNum;
+//	cout << "输入顶点个数、边数：";
+//	cin >> vexNum >> edgeNum;
+//	vector<vector<int> > graph(vexNum + 1, vector<int>(vexNum + 1, INT_MAX));
+//	cout << "输入邻接边及权值a b w:" << endl;
+//	char A, B;
+//	int w;
+//	for (int i = 0; i < edgeNum; i++) {
+//		cin >> A >> B >> w;
+//		int a = A - 64;
+//		int b = B - 64;
+//		graph[a][b] = w;
+//		graph[b][a] = w;
+//	}
+//	for (int i = 1; i <= vexNum; i++)
+//		graph[i][i] = 0;
+//
+//	int cost = prim(graph);	//prim算法
+//
+//	cout << endl << "最小生成树组成：" << endl;
+//	for (int i = 0; i < tree.size(); i++) {
+//		cout << char(tree[i].vexa + 64) << " -> " << char(tree[i].vexb + 64) << " = " << tree[i].edge << endl;
+//	}
+//	cout << "总权值为：" << cost << endl;
+//
+//	system("pause");
+//	return 0;
+//}

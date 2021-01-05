@@ -1,86 +1,123 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
 
-//假设某国家发行了n种不同面值的邮票，并且规定每张信封上最多只允许贴m张邮票。
-//连续邮资问题要求对于给定的n和m，给出邮票面值的最佳设计，在1张信封上贴出从邮资1开始，
-//增量为1的最大连续邮资区间。 
-//例如当n = 5，m = 4时，面值为1，3，11，15，32的5种邮票可以贴出邮资的最大连续区间是1到70。
-
-
-//对于连续邮资问题，用n元组x[1：n]表示n种不同的邮票面值，并约定它们从小到大排列。
-//x[1] = 1是惟一的选择。在未确定剩余其它n－1种邮票面值的情况下，只用x[1]一种邮票面值，
-//所能得到的最大连续邮资区间是[1：m]。接下来，确定x[2]的取值范围，很明显，
-//x[2]的值最小可以取到2，因为x[1] 这时已经为1了。那么最大可以取的值呢？应当是m + 1，
-//为什么？因为如果x[2]取m + 2，则在这个方案中，邮资m + 1不可能取得，
-//（这个时候，x[2：n]的任何一个面值是不能取的，因为就算只取一张，总和也会至少为m + 2，
-//超过m + 1了，反过来，如果只取x[1]面值，则就算把m张全取了，也只能凑到m）。所以，
-//在搜索第2张邮票的时候，搜索范围是2 ~m + 2（m + 2不剪取）。在一般的情况下，已选定x[1：i - 1]，
-//最大连续邮资区间是[1：r]时，接下来x[i]的可取值范围是[x[i - 1] + 1 ：r + 1]。由此可以看出，
-//[x[i - 1] + 1 ：r + 1]（为限界函数）在用回溯法解连续邮资问题时，可用树表示其解空间，
-//该解空间树中各结点的度随x的不同取值而变化。
-
-
-//现在来看在x[1]，x[2]面值确定的情况下，用不超过m张邮票，所得到的最大连续邮资区间是多少？
-//最大连续邮资区间总是以1作为起点的，所以我们用max来表示这个最大值，显然，max至少可以取到m，
-//因为即使不用x[2]面值，只用x[1]面值的情况下，所能得到的最大值就已经是m了。现在来看在x[1]，
-//x[2]面值确定的情况下，用不超过m张邮票，max + 1能不能取到？
-//假设在拼凑的过程中，x[2]面值的邮票取t张，则t >= 0，t <= （max + 1） / x[2] && t <= m
-//现在x[2]面值的邮票张数已经确定，原问题转化为另一个子问题，即，在x[1]面值确定的情况下，
-//用不超过m－t张邮票，max + 1 - t * x[2] 能不能取到？ 。。。。。。
-//到这一步就很容易理解了，因为x[1] 面值为1，所以如果要拼凑的值max + 1 - t * x[2] <= m - t的话，
-//则只用取max + 1 - t * x[2]张就可以拉。相反，如果max + 1 - t * x[2] > m - t的话，则是不可以满足的。
-
-
-class Envelope {
-public:
-	vector<int> findMaxContinuousInterval(vector<int>& nums, int n, int m) {
-		sort(nums.begin(), nums.end());
-		backTrack(nums, n, m);
-		return Sum;
-	}
-
-	void backTrack(vector<int>& nums, int& n, int& m) {
-		if (Postage == Sum.back() + 1) {
-			Sum.push_back(Postage);
-			return;
-		}
-		else {
-			for (int i = 0; i < m; i++) {
-				for (size_t i = 0; i < nums.size(); i++) {
-					if (Postage != Sum.back() + 1) {
-						continue;
-					}
-					Sum.push_back(nums[i]);
-					backTrack(nums, n, m);
-					Sum.pop_back();
-				}
-			}
-		}
-	}
+class Stamp
+{
+	friend int MaxStamp(int, int, int[]);
 
 private:
-	vector<int> Sum = { 1 };  // 邮资的各种可能
-	vector<int> Stamp = { 1 };//记录当前已经选定的邮票面值x[1:i]
-								//能贴出各种邮资所需的最少邮票数
-	vector<int> Best ;		  // 邮票面值的最优解
-	int Postage = 0;		  //邮资
-	int MaxPostage = 1;			 //记录当前已经找到的最大连续邮资区间
+	int n;	//邮票面值数
+	int m;	//每张信封最多允许贴的邮票数
+	int maxvalue;	//当前最优值
+	int maxint;	//大整数
+	int maxl;	//邮资上界
+	int* x;	//当前解
+	int* y;	//贴出各种邮资所需最少邮票数
+	int* bestx;	//当前最优解
+
+	void Backtrack(int i, int r);
 };
 
+void Stamp::Backtrack(int i, int r)
+{
+	/*计算X[1:i]的最大连续邮资区间,考虑到直接递归的求解复杂度太高，
+	我们不妨尝试计算用不超过m张面值为x[1:i]的邮票贴出邮资k所需的最少邮票数y[k]。
+	通过y[k]可以很快推出r的值。事实上，y[k]可以通过递推在O(n)时间内解决*/
+	for (int j = 0; j <= x[i - 2] * (m - 1); j++) //x[i-2]*(m-1)是第i-2层循环的一个上限，目的是找到r-1的值 
+		if (y[j] < m)
+		{
+			for (int k = 1; k <= m - y[j]; k++) //k是对表示j剩余的票数进行检查   
+			{
+				if (y[j] + k < y[j + x[i - 1] * k])
+					//x[i-1]*k是k张邮票能表示的最大邮资   
+					//+j表示增加了i邮资后能   
+					//判断新增加的能表示的邮资需要多少 
+				{
+					y[j + x[i - 1] * k] = y[j] + k;
+					//对第i-2层扩展一个x[i-1]后的邮资分布
+				}
+
+			}
+		}
+	//查看邮资范围扩大多少，然后查询y数组从而找到r 
+	while (y[r] < maxint) //计算X[1:i]的最大连续邮资区间
+	{
+		r++;
+	}
+	//搜索求出r-1的值，对应x[1:i-1]的在m张限制内的最大区间 
+	if (i > n) // 如果到达发行邮票的张数，则更新最终结果值，并返回结果
+	{
+		if (r - 1 > maxvalue)  // 用r计算可贴出的连续邮资最大值，而maxStamp存放最终结果
+		{
+			maxvalue = r - 1;
+			for (int j = 1; j <= n; j++)
+				bestx[j] = x[j];  // 用x[i]表示当前以确定的第i+1张邮票的面值，bestx保存最终结果
+		}
+		return;
+	}
+	int* z = new int[maxl + 1];
+	for (int k = 1; k <= maxl; k++)
+		z[k] = y[k];
+	//保留数据副本，以便返回上层时候能够恢复数据   
+	//以上都是处理第i-1层及其之上的问题   
+	for (int j = x[i - 1] + 1; j <= r; j++) //在第i层有这么多的孩子结点供选择   
+	{
+		x[i] = j;
+		Backtrack(i + 1, r);//返回上层恢复信息
+		for (int k = 1; k <= maxl; k++)
+			y[k] = z[k];
+	}
+	delete[] z;
+}
+
+
+
+int MaxStamp(int n, int m, int bestx[]) {
+	Stamp X;
+	int maxint = 32767;
+	int maxl = 1500;
+
+	X.n = n;
+	X.m = m;
+	X.maxvalue = 0;
+	X.maxint = maxint;
+	X.maxl = maxl;
+	X.bestx = bestx;
+	X.x = new int[n + 1];
+	X.y = new int[maxl + 1];
+
+	for (int i = 0; i <= n; i++)
+		X.x[i] = 0;
+	for (int i = 1; i <= maxl; i++)
+		X.y[i] = maxint;
+	X.x[1] = 1;
+	X.y[0] = 0;
+	X.Backtrack(2, 1);
+	cout << "当前最优解:";
+	for (int i = 1; i <= n; i++)
+		cout << bestx[i] << "  ";
+	cout << endl;
+	delete[] X.x;
+	delete[] X.y;
+	return X.maxvalue;
+}
+
+//
 //int main() {
-//	Envelope envelope;
-//	int n, m;  // n种不同的票价，一张信封上只允许贴m张邮票
-//	cin >> n >> m;
-//	vector<int> nums(n,0); //  不同面值的票价
-//	for (int i = 0; i < n; i++) {
-//		cin >> nums[i];
-//	}
-//	vector<int> res;  //	邮资最大连续区间
-//	res = envelope.findMaxContinuousInterval(nums, n, m);
-//	for (auto i : res) {
-//		cout << i << " ";
-//	}
+//	int* bestx;
+//	int n;
+//	int m;
+//	cout << "请输入邮票面值数:";
+//	cin >> n;
+//	cout << "请输入每张信封最多允许贴的邮票数:";
+//	cin >> m;
+//
+//	bestx = new int[n + 1];
+//	for (int i = 1; i <= n; i++)
+//		bestx[i] = 0;
+//
+//	cout << "最大邮资:" << MaxStamp(n, m, bestx) << endl;
+//	system("pause");
 //	return 0;
 //}
